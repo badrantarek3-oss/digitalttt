@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body { font-family: 'Cairo', sans-serif; direction: rtl; }
 
   :root {
@@ -19,6 +20,7 @@
     --mbk-green-deep: #1f7a2e;
     --mbk-white: #ffffff;
     --mbk-gray: #a8b0a8;
+    --mbk-red: #e74c3c;
   }
 
   /* ===== HERO ===== */
@@ -39,30 +41,15 @@
     border-radius: 20px;
     margin-bottom: 18px;
   }
-  .mbk-hero-title {
-    font-size: 28px;
-    font-weight: 800;
-    line-height: 1.55;
-    margin: 0 0 14px;
-  }
+  .mbk-hero-title { font-size: 28px; font-weight: 800; line-height: 1.55; margin: 0 0 14px; }
   .mbk-hero-title span { color: var(--mbk-green-light); }
-  .mbk-hero-sub {
-    font-size: 16px;
-    color: var(--mbk-gray);
-    line-height: 1.9;
-    max-width: 520px;
-    margin: 0 auto 26px;
-  }
+  .mbk-hero-sub { font-size: 16px; color: var(--mbk-gray); line-height: 1.9; max-width: 520px; margin: 0 auto 26px; }
   .mbk-hero-btn {
     display: inline-block;
     background: linear-gradient(135deg, var(--mbk-green-light), var(--mbk-green));
-    color: #06120a;
-    font-weight: 800;
-    font-size: 17px;
-    padding: 16px 42px;
-    border-radius: 10px;
-    text-decoration: none;
-    box-shadow: 0 8px 24px rgba(62,207,62,0.3);
+    color: #06120a; font-weight: 800; font-size: 17px; padding: 16px 42px;
+    border-radius: 10px; text-decoration: none; box-shadow: 0 8px 24px rgba(62,207,62,0.3);
+    cursor: pointer; border: none;
   }
   .mbk-hero-price { margin-top: 14px; font-size: 15px; color: var(--mbk-gray); }
   .mbk-hero-price b { color: var(--mbk-green-light); font-size: 22px; margin-right: 6px; }
@@ -137,27 +124,91 @@
   .mbk-guarantee-title { font-size: 20px; font-weight: 800; color: var(--mbk-green-light); margin-bottom: 10px; }
   .mbk-guarantee-text { font-size: 14.5px; color: #ddd; line-height: 1.9; }
 
-  /* ===== ORDER ===== */
+  /* ===== ORDER / FORM ===== */
   .mbk-order {
     background: radial-gradient(ellipse at bottom, #162016, var(--mbk-black));
-    padding: 48px 20px; text-align: center;
+    padding: 48px 20px 56px; text-align: center;
   }
   .mbk-order-title { font-size: 23px; font-weight: 800; color: #fff; margin-bottom: 6px; }
-  .mbk-order-sub { font-size: 14px; color: #a8b0a8; margin-bottom: 20px; }
-  .mbk-order-card { max-width: 420px; margin: 0 auto; background: #fff; border-radius: 14px; padding: 26px 20px; }
-  .mbk-order-price-row { display: flex; justify-content: center; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .mbk-order-sub { font-size: 14px; color: #a8b0a8; margin-bottom: 24px; }
+
+  .mbk-order-card {
+    max-width: 460px; margin: 0 auto; background: #fff; border-radius: 16px;
+    padding: 26px 22px; text-align: right;
+  }
+  .mbk-order-price-row {
+    display: flex; justify-content: center; align-items: baseline; gap: 10px; margin-bottom: 4px;
+  }
   .mbk-order-old { text-decoration: line-through; color: #999; font-size: 18px; }
   .mbk-order-new { font-size: 34px; font-weight: 900; color: #0a0e0a; }
-  .mbk-order-unit { font-size: 14px; color: #666; margin-bottom: 18px; }
-  .mbk-order-features { text-align: right; margin: 0 0 20px; padding: 0; list-style: none; }
-  .mbk-order-features li { font-size: 14.5px; color: #333; margin-bottom: 10px; font-weight: 600; }
+  .mbk-order-unit { text-align: center; font-size: 13px; color: #666; margin-bottom: 20px; }
+
+  /* Payment instructions box */
+  .mbk-pay-box {
+    background: #f4f9f4; border: 1.5px dashed var(--mbk-green);
+    border-radius: 12px; padding: 16px 16px; margin-bottom: 22px;
+  }
+  .mbk-pay-title {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 15px; font-weight: 800; color: #0a0e0a; margin-bottom: 10px;
+  }
+  .mbk-pay-title .mbk-pay-icon {
+    width: 22px; height: 22px; border-radius: 6px; background: #e60000;
+    color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0;
+  }
+  .mbk-pay-steps { margin: 0; padding-right: 18px; font-size: 13.5px; color: #333; line-height: 1.9; }
+  .mbk-pay-number {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #fff; border: 1px solid #ddd; border-radius: 8px;
+    padding: 10px 14px; margin-top: 10px;
+  }
+  .mbk-pay-number span:first-child { font-size: 13px; color: #555; font-weight: 600; }
+  .mbk-pay-number b { font-size: 17px; color: var(--mbk-green-deep); letter-spacing: 1px; direction: ltr; }
+  .mbk-pay-copy {
+    background: var(--mbk-green); color: #fff; border: none; border-radius: 6px;
+    font-size: 12px; font-weight: 700; padding: 6px 10px; cursor: pointer;
+  }
+
+  /* Form fields */
+  .mbk-field { margin-bottom: 14px; }
+  .mbk-field label {
+    display: block; font-size: 13.5px; font-weight: 700; color: #222; margin-bottom: 6px;
+  }
+  .mbk-field input[type="text"],
+  .mbk-field input[type="tel"],
+  .mbk-field input[type="email"] {
+    width: 100%; padding: 12px 14px; border-radius: 8px; border: 1.5px solid #ddd;
+    font-family: 'Cairo', sans-serif; font-size: 14px; direction: rtl; outline: none;
+  }
+  .mbk-field input:focus { border-color: var(--mbk-green); }
+
+  .mbk-upload {
+    border: 1.5px dashed #bbb; border-radius: 10px; padding: 18px 14px;
+    text-align: center; cursor: pointer; transition: border-color 0.15s; position: relative;
+    background: #fafafa;
+  }
+  .mbk-upload:hover { border-color: var(--mbk-green); }
+  .mbk-upload input[type="file"] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .mbk-upload-icon { font-size: 22px; margin-bottom: 6px; }
+  .mbk-upload-text { font-size: 13px; color: #555; font-weight: 600; }
+  .mbk-upload-filename { font-size: 12.5px; color: var(--mbk-green-deep); font-weight: 700; margin-top: 6px; display: none; }
+
   .mbk-order-btn {
     display: block; width: 100%;
     background: linear-gradient(135deg, var(--mbk-green-light), var(--mbk-green));
     color: #06120a; font-weight: 800; font-size: 17px; padding: 16px;
-    border-radius: 10px; text-decoration: none; box-sizing: border-box; border: none; cursor: pointer;
+    border-radius: 10px; text-decoration: none; box-sizing: border-box; border: none;
+    cursor: pointer; margin-top: 18px;
   }
-  .mbk-order-note { margin-top: 12px; font-size: 12.5px; color: #888; }
+  .mbk-order-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .mbk-order-note { margin-top: 12px; font-size: 12.5px; color: #888; text-align: center; }
+  .mbk-form-error {
+    display: none; background: #fdecea; color: #c0392b; font-size: 13px; font-weight: 700;
+    padding: 10px 12px; border-radius: 8px; margin-bottom: 14px; text-align: center;
+  }
 
   /* ===== FAQ ===== */
   .mbk-faq { background: #f4f7f4; padding: 48px 20px; }
@@ -245,23 +296,65 @@
   </div>
 </div>
 
-<!-- ORDER -->
+<!-- ORDER / FORM -->
 <div class="mbk-order" id="mbk-order">
   <h2 class="mbk-order-title">ابدأ رحلتك في الميديا باينج اليوم</h2>
-  <p class="mbk-order-sub">دفعة واحدة، وصول فوري، ومخاطرة صفر</p>
+  <p class="mbk-order-sub">ادفع بفودافون كاش وابعت لقطة الشاشة، وهيوصلك الكتاب فورًا</p>
+
   <div class="mbk-order-card">
     <div class="mbk-order-price-row">
       <span class="mbk-order-old">399 ج.م</span>
       <span class="mbk-order-new">199 ج.م</span>
     </div>
     <div class="mbk-order-unit">دفعة واحدة فقط — بدون اشتراكات</div>
-    <ul class="mbk-order-features">
-      <li>✅ كتاب كامل PDF قابل للتحميل فورًا بعد الطلب</li>
-      <li>✅ محتوى عملي 100% مبني على تجربة السوق المصري</li>
-      <li>✅ ضمان استرجاع الفلوس بالكامل خلال 30 يوم</li>
-    </ul>
-    <a href="#" class="mbk-order-btn">اطلب نسختك الآن</a>
-    <p class="mbk-order-note">العرض متاح لفترة محدودة</p>
+
+    <!-- Payment instructions -->
+    <div class="mbk-pay-box">
+      <div class="mbk-pay-title">
+        <span class="mbk-pay-icon">VF</span>
+        الدفع عن طريق فودافون كاش
+      </div>
+      <ol class="mbk-pay-steps">
+        <li>حوّل مبلغ <b>199 جنيه</b> على الرقم اللي تحت</li>
+        <li>اعمل سكرين شوت لتأكيد التحويل</li>
+        <li>املا بياناتك تحت وارفق الصورة</li>
+      </ol>
+      <div class="mbk-pay-number">
+        <span>رقم فودافون كاش</span>
+        <b id="mbk-vf-number">01124895484</b>
+        <button type="button" class="mbk-pay-copy" onclick="mbkCopyNumber()">نسخ</button>
+      </div>
+    </div>
+
+    <div id="mbk-form-error" class="mbk-form-error">من فضلك املا كل الحقول وارفق صورة إثبات التحويل</div>
+
+    <form id="mbk-order-form">
+      <div class="mbk-field">
+        <label for="mbk-name">الاسم بالكامل</label>
+        <input type="text" id="mbk-name" name="name" placeholder="اكتب اسمك" required>
+      </div>
+      <div class="mbk-field">
+        <label for="mbk-phone">رقم الموبايل (فودافون كاش)</label>
+        <input type="tel" id="mbk-phone" name="phone" placeholder="01xxxxxxxxx" required>
+      </div>
+      <div class="mbk-field">
+        <label for="mbk-email">البريد الإلكتروني (لاستلام الكتاب)</label>
+        <input type="email" id="mbk-email" name="email" placeholder="example@email.com" required>
+      </div>
+      <div class="mbk-field">
+        <label>صورة إثبات التحويل</label>
+        <div class="mbk-upload" id="mbk-upload-box">
+          <input type="file" id="mbk-screenshot" name="screenshot" accept="image/*" required>
+          <div class="mbk-upload-icon">📎</div>
+          <div class="mbk-upload-text">اضغط هنا أو اسحب صورة السكرين شوت</div>
+          <div class="mbk-upload-filename" id="mbk-filename"></div>
+        </div>
+      </div>
+
+      <button type="submit" class="mbk-order-btn" id="mbk-submit-btn">تأكيد الطلب</button>
+    </form>
+
+    <p class="mbk-order-note">هيوصلك الكتاب على الإيميل خلال ساعات من تأكيد التحويل</p>
   </div>
 </div>
 
@@ -270,7 +363,7 @@
   <h2 class="mbk-faq-title">أسئلة شائعة</h2>
   <div class="mbk-faq-item">
     <p class="mbk-faq-q">الكتاب هيوصلني إزاي بعد الطلب؟</p>
-    <p class="mbk-faq-a">فور إتمام الطلب هيوصلك رابط تحميل مباشر لنسخة PDF، تقدر تفتحها من الموبايل أو اللابتوب في أي وقت.</p>
+    <p class="mbk-faq-a">بعد ما تبعت بياناتك وصورة التحويل، هيوصلك رابط تحميل الكتاب PDF على الإيميل خلال ساعات.</p>
   </div>
   <div class="mbk-faq-item">
     <p class="mbk-faq-q">الكتاب مناسب لو أنا مبتدئ تمامًا؟</p>
@@ -286,6 +379,73 @@
 <div class="mbk-footer">
   <p>© 2026 الميديا باينج من الصفر للاحتراف — جميع الحقوق محفوظة</p>
 </div>
+
+<script>
+  // Show filename when a screenshot is selected
+  const fileInput = document.getElementById('mbk-screenshot');
+  const filenameEl = document.getElementById('mbk-filename');
+  fileInput.addEventListener('change', function () {
+    if (this.files && this.files[0]) {
+      filenameEl.textContent = '✅ ' + this.files[0].name;
+      filenameEl.style.display = 'block';
+    }
+  });
+
+  // Copy Vodafone Cash number
+  function mbkCopyNumber() {
+    const num = document.getElementById('mbk-vf-number').textContent;
+    navigator.clipboard.writeText(num).then(function () {
+      alert('اتنسخ الرقم: ' + num);
+    });
+  }
+
+  // Handle form submission
+  // IMPORTANT: replace YOUR_FORM_ID below with your real Formspree form ID
+  // (create a free form at https://formspree.io — supports file uploads)
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maewaake';
+
+  const form = document.getElementById('mbk-order-form');
+  const submitBtn = document.getElementById('mbk-submit-btn');
+  const errorBox = document.getElementById('mbk-form-error');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    errorBox.style.display = 'none';
+
+    const name = document.getElementById('mbk-name').value.trim();
+    const phone = document.getElementById('mbk-phone').value.trim();
+    const email = document.getElementById('mbk-email').value.trim();
+    const file = fileInput.files[0];
+
+    if (!name || !phone || !email || !file) {
+      errorBox.style.display = 'block';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'جارِ إرسال الطلب...';
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        window.location.href = 'thank-you.html';
+      } else {
+        throw new Error('submit failed');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'تأكيد الطلب';
+      errorBox.textContent = 'حصل خطأ أثناء الإرسال، حاول تاني أو تواصل معانا مباشرة.';
+      errorBox.style.display = 'block';
+    }
+  });
+</script>
 
 </body>
 </html>
