@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الميديا باينج من الصفر للاحتراف</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Cairo', sans-serif; direction: rtl; }
+
+  :root {
+    --mbk-black: #0a0e0a;
+    --mbk-dark: #121812;
+    --mbk-green: #3ecf3e;
+    --mbk-green-light: #6ee86e;
+    --mbk-green-deep: #1f7a2e;
+    --mbk-white: #ffffff;
+    --mbk-gray: #a8b0a8;
+  }
+
+  /* ===== HERO ===== */
+  .mbk-hero {
+    background: radial-gradient(ellipse at top, #162016 0%, var(--mbk-black) 70%);
+    padding: 50px 20px 40px;
+    text-align: center;
+    color: var(--mbk-white);
+  }
+  .mbk-hero-badge {
+    display: inline-block;
+    background: rgba(62,207,62,0.12);
+    border: 1px solid var(--mbk-green);
+    color: var(--mbk-green-light);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .mbk-hero-title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.55;
+    margin: 0 0 14px;
+  }
+  .mbk-hero-title span { color: var(--mbk-green-light); }
+  .mbk-hero-sub {
+    font-size: 16px;
+    color: var(--mbk-gray);
+    line-height: 1.9;
+    max-width: 520px;
+    margin: 0 auto 26px;
+  }
+  .mbk-hero-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--mbk-green-light), var(--mbk-green));
+    color: #06120a;
+    font-weight: 800;
+    font-size: 17px;
+    padding: 16px 42px;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(62,207,62,0.3);
+  }
+  .mbk-hero-price { margin-top: 14px; font-size: 15px; color: var(--mbk-gray); }
+  .mbk-hero-price b { color: var(--mbk-green-light); font-size: 22px; margin-right: 6px; }
+  .mbk-hero-old { text-decoration: line-through; color: #555; margin-left: 6px; }
+
+  /* ===== PAIN ===== */
+  .mbk-pain { background: #f4f7f4; padding: 48px 20px; text-align: center; }
+  .mbk-pain-title { font-size: 24px; font-weight: 800; color: #0a0e0a; margin-bottom: 10px; }
+  .mbk-pain-sub { font-size: 14.5px; color: #667; margin-bottom: 28px; }
+  .mbk-pain-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 480px; margin: 0 auto; }
+  .mbk-pain-item {
+    background: #fff; border-right: 4px solid var(--mbk-green);
+    border-radius: 8px; padding: 16px 18px; text-align: right;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .mbk-pain-item p { margin: 0; font-size: 15px; color: #2b2b2b; line-height: 1.8; font-weight: 600; }
+
+  /* ===== TOC ===== */
+  .mbk-toc {
+    background: radial-gradient(ellipse at 50% 0%, #162016 0%, var(--mbk-black) 55%, #050505 100%);
+    padding: 56px 20px 48px; color: var(--mbk-white);
+  }
+  .mbk-toc-eyebrow {
+    display: block; text-align: center; font-size: 12px; font-weight: 700;
+    letter-spacing: 2px; color: var(--mbk-green-light); margin-bottom: 10px;
+  }
+  .mbk-toc-title { font-size: 25px; font-weight: 800; text-align: center; margin: 0 0 8px; line-height: 1.4; }
+  .mbk-toc-title span { color: var(--mbk-green-light); }
+  .mbk-toc-rule {
+    width: 56px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--mbk-green), transparent);
+    margin: 0 auto 34px;
+  }
+  .mbk-toc-list {
+    max-width: 520px; margin: 0 auto;
+    border: 1px solid rgba(62,207,62,0.18); border-radius: 14px;
+    overflow: hidden; background: rgba(255,255,255,0.015);
+  }
+  .mbk-toc-item {
+    display: flex; align-items: center; gap: 16px; padding: 15px 20px;
+    border-bottom: 1px solid rgba(62,207,62,0.12);
+  }
+  .mbk-toc-item:last-child { border-bottom: none; }
+  .mbk-toc-num {
+    flex-shrink: 0; width: 34px; height: 34px; border-radius: 9px;
+    background: linear-gradient(155deg, rgba(62,207,62,0.16), rgba(62,207,62,0.05));
+    border: 1px solid rgba(62,207,62,0.4); color: var(--mbk-green-light);
+    font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center;
+  }
+  .mbk-toc-name { font-size: 14.5px; font-weight: 700; color: #edf2ed; line-height: 1.5; flex: 1; text-align: right; }
+  .mbk-toc-footer { text-align: center; margin-top: 22px; font-size: 12.5px; color: var(--mbk-gray); }
+
+  /* ===== AUTHORITY ===== */
+  .mbk-auth { background: #f4f7f4; padding: 48px 20px; text-align: center; }
+  .mbk-auth-title { font-size: 22px; font-weight: 800; color: #0a0e0a; margin-bottom: 14px; }
+  .mbk-auth-text { max-width: 520px; margin: 0 auto 26px; font-size: 15px; line-height: 2; color: #444; }
+  .mbk-auth-stats { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .mbk-auth-stat {
+    background: #fff; border-radius: 10px; padding: 16px 22px; min-width: 120px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06); border-bottom: 3px solid var(--mbk-green);
+  }
+  .mbk-auth-stat b { display: block; font-size: 22px; color: var(--mbk-green-deep); }
+  .mbk-auth-stat span { font-size: 13px; color: #666; }
+
+  /* ===== GUARANTEE ===== */
+  .mbk-guarantee { background: var(--mbk-black); padding: 42px 20px; text-align: center; }
+  .mbk-guarantee-box {
+    max-width: 480px; margin: 0 auto; border: 2px solid var(--mbk-green);
+    border-radius: 14px; padding: 28px 20px; background: rgba(62,207,62,0.04);
+  }
+  .mbk-guarantee-icon { font-size: 38px; margin-bottom: 10px; }
+  .mbk-guarantee-title { font-size: 20px; font-weight: 800; color: var(--mbk-green-light); margin-bottom: 10px; }
+  .mbk-guarantee-text { font-size: 14.5px; color: #ddd; line-height: 1.9; }
+
+  /* ===== ORDER ===== */
+  .mbk-order {
+    background: radial-gradient(ellipse at bottom, #162016, var(--mbk-black));
+    padding: 48px 20px; text-align: center;
+  }
+  .mbk-order-title { font-size: 23px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .mbk-order-sub { font-size: 14px; color: #a8b0a8; margin-bottom: 20px; }
+  .mbk-order-card { max-width: 420px; margin: 0 auto; background: #fff; border-radius: 14px; padding: 26px 20px; }
+  .mbk-order-price-row { display: flex; justify-content: center; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .mbk-order-old { text-decoration: line-through; color: #999; font-size: 18px; }
+  .mbk-order-new { font-size: 34px; font-weight: 900; color: #0a0e0a; }
+  .mbk-order-unit { font-size: 14px; color: #666; margin-bottom: 18px; }
+  .mbk-order-features { text-align: right; margin: 0 0 20px; padding: 0; list-style: none; }
+  .mbk-order-features li { font-size: 14.5px; color: #333; margin-bottom: 10px; font-weight: 600; }
+  .mbk-order-btn {
+    display: block; width: 100%;
+    background: linear-gradient(135deg, var(--mbk-green-light), var(--mbk-green));
+    color: #06120a; font-weight: 800; font-size: 17px; padding: 16px;
+    border-radius: 10px; text-decoration: none; box-sizing: border-box; border: none; cursor: pointer;
+  }
+  .mbk-order-note { margin-top: 12px; font-size: 12.5px; color: #888; }
+
+  /* ===== FAQ ===== */
+  .mbk-faq { background: #f4f7f4; padding: 48px 20px; }
+  .mbk-faq-title { text-align: center; font-size: 22px; font-weight: 800; color: #0a0e0a; margin-bottom: 26px; }
+  .mbk-faq-item {
+    max-width: 500px; margin: 0 auto 12px; background: #fff; border-radius: 10px;
+    padding: 16px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-right: 3px solid var(--mbk-green);
+  }
+  .mbk-faq-q { font-weight: 800; font-size: 15px; color: #0a0e0a; margin-bottom: 6px; }
+  .mbk-faq-a { font-size: 14px; color: #555; line-height: 1.85; margin: 0; }
+
+  /* ===== FOOTER ===== */
+  .mbk-footer {
+    background: #0a0e0a; padding: 24px 20px; text-align: center;
+    border-top: 1px solid rgba(62,207,62,0.2);
+  }
+  .mbk-footer p { color: #6a726a; font-size: 13px; margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="mbk-hero">
+  <div class="mbk-hero-badge">📈 دليل عملي معتمد على بيانات حقيقية</div>
+  <h1 class="mbk-hero-title">تعلّم الميديا باينج بطريقة تحوّل مجهودك<br>لـ <span>نتائج تقدر تقيسها بالأرقام</span></h1>
+  <p class="mbk-hero-sub">"الميديا باينج من الصفر للاحتراف" — الدليل الوحيد اللي هيوريك إزاي تبني، تدير، وتحلل حملاتك الإعلانية زي المحترفين، بأسلوب مبني على تجربة فعلية في السوق المصري مش نظريات مترجمة.</p>
+  <a href="#mbk-order" class="mbk-hero-btn">احصل على نسختك الآن</a>
+  <div class="mbk-hero-price"><span class="mbk-hero-old">399 جنيه</span><b>199 جنيه</b></div>
+</div>
+
+<!-- PAIN -->
+<div class="mbk-pain">
+  <h2 class="mbk-pain-title">لو حاسس إن ميزانيتك الإعلانية بتتبخر من غير نتيجة واضحة...</h2>
+  <p class="mbk-pain-sub">أنت مش لوحدك، والمشكلة مش في الميزانية، المشكلة في غياب الأساس الصح</p>
+  <div class="mbk-pain-grid">
+    <div class="mbk-pain-item"><p>❌ بتتنقل بين كورسات مجانية ومعلومات متضاربة من غير خطة واضحة تجمعهم</p></div>
+    <div class="mbk-pain-item"><p>❌ حملاتك شغالة بس مش عارف تقرأ أرقامها ولا تعرف مين المسؤول عن الخسارة</p></div>
+    <div class="mbk-pain-item"><p>❌ مش قادر تحسب تكلفة الأوردر الحقيقية ولا تتوقع نسب التسليم قبل ما تخسر</p></div>
+    <div class="mbk-pain-item"><p>❌ عايز تبني مصدر دخل من التسويق الرقمي بس محتاج مسار واضح يوصلك بسرعة</p></div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="mbk-toc">
+  <span class="mbk-toc-eyebrow">فهرس المحتوى</span>
+  <h2 class="mbk-toc-title">هتلاقي جوه الكتاب <span>15 فصل</span></h2>
+  <div class="mbk-toc-rule"></div>
+  <div class="mbk-toc-list">
+    <div class="mbk-toc-item"><div class="mbk-toc-num">01</div><div class="mbk-toc-name">البداية الصح: العقلية قبل أى خطوة</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">02</div><div class="mbk-toc-name">أسرار الـ Hooks: إزاى توقف السكرول</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">03</div><div class="mbk-toc-name">منتج Winner... ولا مجرد تريند يومين؟</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">04</div><div class="mbk-toc-name">أسرار الـ UGC والميديا</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">05</div><div class="mbk-toc-name">إزاى تجيب ميديا احترافية مجانًا</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">06</div><div class="mbk-toc-name">أخطاء بتخليك تخسر فلوس حتى لو المنتج Winner</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">07</div><div class="mbk-toc-name">إزاى تعمل Testing صح بدون ما تفلس</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">08</div><div class="mbk-toc-name">فهم الأرقام ببساطة: CTR, CPM, CPC, CPA</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">09</div><div class="mbk-toc-name">إمتى تعمل Scale؟</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">10</div><div class="mbk-toc-name">إزاى تعرف المشكلة فين بالظبط؟</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">11</div><div class="mbk-toc-name">أسرار الـ Psychology فى البيع</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">12</div><div class="mbk-toc-name">إزاى تعمل Store يخلى العميل يثق فيك</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">13</div><div class="mbk-toc-name">أسرار الـ Offers</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">14</div><div class="mbk-toc-name">تحليل المنافسين صح: مش Copy Paste</div></div>
+    <div class="mbk-toc-item"><div class="mbk-toc-num">15</div><div class="mbk-toc-name">إزاى تبنى سيستم يجيب أوردرات باستمرار</div></div>
+  </div>
+  <p class="mbk-toc-footer">50 صفحة · محتوى تطبيقي 100%</p>
+</div>
+
+<!-- AUTHORITY -->
+<div class="mbk-auth">
+  <h2 class="mbk-auth-title">محتوى مبني على شغل حقيقي، مش ترجمة كورسات أجنبية</h2>
+  <p class="mbk-auth-text">كل معلومة في الكتاب اتجربت فعليًا في إدارة حملات إعلانية لبراندات مصرية حقيقية داخل سوق الـ COD — بمعنى إنك مش بتقرأ نظرية، إنت بتقرأ خبرة اتحولت لخطوات تقدر تطبقها من أول يوم.</p>
+  <div class="mbk-auth-stats">
+    <div class="mbk-auth-stat"><b>+5</b><span>براندات حقيقية</span></div>
+    <div class="mbk-auth-stat"><b>50</b><span>صفحة محتوى عملي</span></div>
+    <div class="mbk-auth-stat"><b>100%</b><span>خبرة سوق مصري</span></div>
+  </div>
+</div>
+
+<!-- GUARANTEE -->
+<div class="mbk-guarantee">
+  <div class="mbk-guarantee-box">
+    <div class="mbk-guarantee-icon">🛡️</div>
+    <div class="mbk-guarantee-title">ضمان استرجاع الفلوس بالكامل — 30 يوم</div>
+    <p class="mbk-guarantee-text">اقرأ الكتاب وطبّق اللي فيه، ولو حسيت إنه ملقاش قيمة حقيقية لشغلك، إرجعلنا في أي وقت خلال 30 يوم وهنرجعلك فلوسك كاملة من غير أي أسئلة. القرار كله في إيدك.</p>
+  </div>
+</div>
+
+<!-- ORDER -->
+<div class="mbk-order" id="mbk-order">
+  <h2 class="mbk-order-title">ابدأ رحلتك في الميديا باينج اليوم</h2>
+  <p class="mbk-order-sub">دفعة واحدة، وصول فوري، ومخاطرة صفر</p>
+  <div class="mbk-order-card">
+    <div class="mbk-order-price-row">
+      <span class="mbk-order-old">399 ج.م</span>
+      <span class="mbk-order-new">199 ج.م</span>
+    </div>
+    <div class="mbk-order-unit">دفعة واحدة فقط — بدون اشتراكات</div>
+    <ul class="mbk-order-features">
+      <li>✅ كتاب كامل PDF قابل للتحميل فورًا بعد الطلب</li>
+      <li>✅ محتوى عملي 100% مبني على تجربة السوق المصري</li>
+      <li>✅ ضمان استرجاع الفلوس بالكامل خلال 30 يوم</li>
+    </ul>
+    <a href="#" class="mbk-order-btn">اطلب نسختك الآن</a>
+    <p class="mbk-order-note">العرض متاح لفترة محدودة</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="mbk-faq">
+  <h2 class="mbk-faq-title">أسئلة شائعة</h2>
+  <div class="mbk-faq-item">
+    <p class="mbk-faq-q">الكتاب هيوصلني إزاي بعد الطلب؟</p>
+    <p class="mbk-faq-a">فور إتمام الطلب هيوصلك رابط تحميل مباشر لنسخة PDF، تقدر تفتحها من الموبايل أو اللابتوب في أي وقت.</p>
+  </div>
+  <div class="mbk-faq-item">
+    <p class="mbk-faq-q">الكتاب مناسب لو أنا مبتدئ تمامًا؟</p>
+    <p class="mbk-faq-a">أيوه، اتصمم عمدًا يبدأ معاك من الصفر بترتيب منطقي وخطوات عملية، لغاية ما توصل لمستوى الاحتراف.</p>
+  </div>
+  <div class="mbk-faq-item">
+    <p class="mbk-faq-q">لو حسيت إن المحتوى ملقاش قيمة ليا؟</p>
+    <p class="mbk-faq-a">عندك ضمان استرجاع كامل الفلوس خلال 30 يوم من الشراء، من غير أي تعقيد أو أسئلة.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="mbk-footer">
+  <p>© 2026 الميديا باينج من الصفر للاحتراف — جميع الحقوق محفوظة</p>
+</div>
+
+</body>
+</html>
